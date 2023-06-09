@@ -24,6 +24,7 @@
   "dependencies": {
     "dompurify": "^2.4.1",
     "github-reserved-names": "^2.0.4",
+    "microsoft-cognitiveservices-speech-sdk": "^1.29.0",
     "uhtml": "^3.1.0"
   },
   "devDependencies": {
