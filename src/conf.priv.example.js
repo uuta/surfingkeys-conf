@@ -33,6 +33,12 @@ const keys = {
   google_cx_cs: "", // chrome.google.com/webstore/*
   google_cx_jq: "", // api.jquery.com/*
   google_cx_gg: "", // godoc.org/*, golang.org/pkg/*
+
+  // ****** Azure speech services ****** //
+  // Obtain environment variables from Azure portal after creating a Speech resource
+  // https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal
+  speech_key: "",
+  speech_region: "",
 }
 
 // A function which accepts a Digital Object Identifier (DOI) and returns a URL,
