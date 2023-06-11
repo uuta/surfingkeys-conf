@@ -39,11 +39,11 @@ const keys = {
   // https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal
   speech_key: "",
   speech_region: "",
-}
+};
 
 // A function which accepts a Digital Object Identifier (DOI) and returns a URL,
 // used for accessing academic papers.
 // Hint: You probably want to use the service created by Alexandra Elbakyan
-const doi_handler = (doi) => `https://doi.org/${doi}`
+const doi_handler = (doi) => `https://doi.org/${doi}`;
 
-export default { keys, doi_handler }
+export default { keys, doi_handler };

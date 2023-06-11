@@ -19,10 +19,12 @@
   },
 
   "rules": {
-    "semi": ["error", "never"],
-    "comma-dangle": ["warn", "always-multiline"],
+    "semi": ["warn", "always"],
+    "comma-dangle": ["error", "only-multiline"],
     "quotes": ["warn", "double"],
     "no-cond-assign": ["error", "except-parens"],
+    "operator-linebreak": ["error", "after"],
+    "function-paren-newline": "off",
 
     "prefer-rest-params": "off",
     "no-underscore-dangle": "off",
@@ -33,20 +35,7 @@
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
 
-    "key-spacing": [
-      "warn",
-      {
-        "singleLine": {
-          "beforeColon": false,
-          "afterColon": true
-        },
-        "multiLine": {
-          "beforeColon": false,
-          "afterColon": true,
-          "align": "value"
-        }
-      }
-    ],
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
 
     "indent": [
       "warn",
@@ -55,6 +44,7 @@
         "SwitchCase": 0,
         "VariableDeclarator": { "var": 2, "let": 2, "const": 3 }
       }
-    ]
+    ],
+    "func-names": "off"
   }
 }
