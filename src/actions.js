@@ -1228,9 +1228,27 @@ const configureSpeechSDK = () => {
     pushStream,
   };
 };
+const readWithTimeout = (stream, buffer, timeout) => {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error("Read operation timed out"));
+    }, timeout);
+
+    stream
+      .read(buffer)
+      .then((bytesRead) => {
+        clearTimeout(timer);
+        resolve(bytesRead);
+      })
+      .catch((err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+};
 
 const readAllFromStream = async (pushStream) => {
-  const dataBuffer = new ArrayBuffer(1024); // adjust size as needed
+  const dataBuffer = new ArrayBuffer(1024 * 10); // adjust size as needed
   const receivedData = [];
   let bytesRead;
 
@@ -1239,13 +1257,13 @@ const readAllFromStream = async (pushStream) => {
   /* eslint-disable no-await-in-loop */
   try {
     do {
-      bytesRead = await pushStream.read(dataBuffer);
-      console.log(`Bytes read: ${bytesRead}`);
+      bytesRead = await readWithTimeout(pushStream, dataBuffer, 5000); // 5 second timeout
       receivedData.push(new Uint8Array(dataBuffer.slice(0, bytesRead)));
     } while (bytesRead > 0);
   } catch (err) {
     console.error(`Error reading from stream: ${err}`);
   }
+  /* eslint-enable no-await-in-loop */
 
   console.log("done receiving data");
 
@@ -1256,7 +1274,6 @@ const requestToAzure = (synthesizer, pushStream) => {
   if (navigator.clipboard) {
     navigator.clipboard.readText().then((clipText) => {
       const text = clipText || "Haha, I am a robot";
-      console.log(`synthesizing: ${text}`);
 
       synthesizer.speakTextAsync(
         text,
@@ -1271,11 +1288,10 @@ const requestToAzure = (synthesizer, pushStream) => {
             // Create a link to download the file
             const downloadLink = document.createElement("a");
             downloadLink.href = audioUrl;
-            downloadLink.download = "output.wav";
+            downloadLink.download = `${text}.mp3`;
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);
-            console.log("file downloaded.");
           } else {
             console.error(
               `Speech synthesis canceled, ${result.errorDetails}\nDid you set the speech resource key and region values?`,

@@ -293,9 +293,9 @@ maps.global = [
     callback: () => Front.openOmnibar({ type: "History" }),
   },
   {
-    alias: ";a",
+    alias: "se",
     category: categories.visualMode,
-    description: "Text to speech",
+    description: "Text to speech (English)",
     callback: actions.textToSpeech,
   },
   // {
