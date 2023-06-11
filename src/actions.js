@@ -1218,7 +1218,7 @@ const configureSpeechSDK = () => {
   );
 
   // The language of the voice that speaks.
-  speechConfig.speechSynthesisVoiceName = "en-US-JennyNeural";
+  speechConfig.speechSynthesisVoiceName = "en-US-DavisNeural";
 
   // Create the speech synthesizer.
   return new sdk.SpeechSynthesizer(
@@ -1228,26 +1228,30 @@ const configureSpeechSDK = () => {
 };
 
 const processUserInput = (synthesizer) => {
-  const text = "Haha, I am a robot";
-  // Start the synthesizer and wait for a result.
-  synthesizer.speakTextAsync(
-    text,
-    (result) => {
-      if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-        console.log("synthesis finished.");
-      } else {
-        console.error(
-          `Speech synthesis canceled, ${result.errorDetails}\nDid you set the speech resource key and region values?`,
-        );
-      }
-      synthesizer.close();
-    },
-    (err) => {
-      console.trace(`err - ${err}`);
-      synthesizer.close();
-    },
-  );
-  console.log("Now synthesizing to speaker output.");
+  if (navigator.clipboard) {
+    navigator.clipboard.readText().then((clipText) => {
+      const text = clipText || "Haha, I am a robot";
+      // Start the synthesizer and wait for a result.
+      synthesizer.speakTextAsync(
+        text,
+        (result) => {
+          if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
+            console.log("synthesis finished.");
+          } else {
+            console.error(
+              `Speech synthesis canceled, ${result.errorDetails}\nDid you set the speech resource key and region values?`,
+            );
+          }
+          synthesizer.close();
+        },
+        (err) => {
+          console.trace(`err - ${err}`);
+          synthesizer.close();
+        },
+      );
+      console.log("Now synthesizing to speaker output.");
+    });
+  }
 };
 
 actions.textToSpeech = () => {
