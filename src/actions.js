@@ -1216,27 +1216,66 @@ const configureSpeechSDK = () => {
     priv.keys.speech_key,
     priv.keys.speech_region,
   );
-
-  // The language of the voice that speaks.
   speechConfig.speechSynthesisVoiceName = "en-US-DavisNeural";
 
-  // Create the speech synthesizer.
-  return new sdk.SpeechSynthesizer(
-    speechConfig,
-    sdk.AudioConfig.fromDefaultSpeakerOutput(),
-  );
+  const pushStream = sdk.PullAudioOutputStream.create();
+
+  return {
+    synthesizer: new sdk.SpeechSynthesizer(
+      speechConfig,
+      sdk.AudioConfig.fromStreamOutput(pushStream),
+    ),
+    pushStream,
+  };
 };
 
-const processUserInput = (synthesizer) => {
+const readAllFromStream = async (pushStream) => {
+  const dataBuffer = new ArrayBuffer(1024); // adjust size as needed
+  const receivedData = [];
+  let bytesRead;
+
+  console.log("receiving data...");
+
+  /* eslint-disable no-await-in-loop */
+  try {
+    do {
+      bytesRead = await pushStream.read(dataBuffer);
+      console.log(`Bytes read: ${bytesRead}`);
+      receivedData.push(new Uint8Array(dataBuffer.slice(0, bytesRead)));
+    } while (bytesRead > 0);
+  } catch (err) {
+    console.error(`Error reading from stream: ${err}`);
+  }
+
+  console.log("done receiving data");
+
+  return new Blob(receivedData, { type: "audio/wav" });
+};
+
+const requestToAzure = (synthesizer, pushStream) => {
   if (navigator.clipboard) {
     navigator.clipboard.readText().then((clipText) => {
       const text = clipText || "Haha, I am a robot";
-      // Start the synthesizer and wait for a result.
+      console.log(`synthesizing: ${text}`);
+
       synthesizer.speakTextAsync(
         text,
-        (result) => {
+        async (result) => {
           if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
             console.log("synthesis finished.");
+
+            // Convert the push stream to a blob and create a URL for it
+            const audioBlob = await readAllFromStream(pushStream);
+            const audioUrl = URL.createObjectURL(audioBlob);
+
+            // Create a link to download the file
+            const downloadLink = document.createElement("a");
+            downloadLink.href = audioUrl;
+            downloadLink.download = "output.wav";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            console.log("file downloaded.");
           } else {
             console.error(
               `Speech synthesis canceled, ${result.errorDetails}\nDid you set the speech resource key and region values?`,
@@ -1255,8 +1294,8 @@ const processUserInput = (synthesizer) => {
 };
 
 actions.textToSpeech = () => {
-  const synthesizer = configureSpeechSDK();
-  processUserInput(synthesizer);
+  const { synthesizer, pushStream } = configureSpeechSDK();
+  requestToAzure(synthesizer, pushStream);
 };
 
 export default actions;
