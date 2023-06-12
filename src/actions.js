@@ -1228,8 +1228,9 @@ const configureSpeechSDK = () => {
     pushStream,
   };
 };
-const readWithTimeout = (stream, buffer, timeout) => {
-  return new Promise((resolve, reject) => {
+
+const readWithTimeout = (stream, buffer, timeout) =>
+  new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
       reject(new Error("Read operation timed out"));
     }, timeout);
@@ -1245,14 +1246,11 @@ const readWithTimeout = (stream, buffer, timeout) => {
         reject(err);
       });
   });
-};
 
 const readAllFromStream = async (pushStream) => {
   const dataBuffer = new ArrayBuffer(1024 * 10); // adjust size as needed
   const receivedData = [];
   let bytesRead;
-
-  console.log("receiving data...");
 
   /* eslint-disable no-await-in-loop */
   try {
@@ -1263,17 +1261,17 @@ const readAllFromStream = async (pushStream) => {
   } catch (err) {
     console.error(`Error reading from stream: ${err}`);
   }
-  /* eslint-enable no-await-in-loop */
-
-  console.log("done receiving data");
 
   return new Blob(receivedData, { type: "audio/wav" });
 };
 
 const requestToAzure = (synthesizer, pushStream) => {
   if (navigator.clipboard) {
-    navigator.clipboard.readText().then((clipText) => {
-      const text = clipText || "Haha, I am a robot";
+    navigator.clipboard.readText().then((text) => {
+      if (text === "") {
+        console.error("Clipboard is empty");
+        return;
+      }
 
       synthesizer.speakTextAsync(
         text,
@@ -1288,7 +1286,7 @@ const requestToAzure = (synthesizer, pushStream) => {
             // Create a link to download the file
             const downloadLink = document.createElement("a");
             downloadLink.href = audioUrl;
-            downloadLink.download = `${text}.mp3`;
+            downloadLink.download = `${text}.wav`;
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);

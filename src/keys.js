@@ -40,6 +40,8 @@ const unmaps = {
     "p",
     "<Ctrl-j>",
     "<Ctrl-h>",
+    "j",
+    "k",
   ],
   searchAliases: {
     s: ["g", "d", "b", "e", "w", "s", "h", "y"],
@@ -293,7 +295,7 @@ maps.global = [
     callback: () => Front.openOmnibar({ type: "History" }),
   },
   {
-    alias: "se",
+    alias: ";s",
     category: categories.visualMode,
     description: "Text to speech (English)",
     callback: actions.textToSpeech,
@@ -305,7 +307,7 @@ maps.global = [
   // },
 ];
 
-maps["amazon.com"] = [
+maps["amazon.co.jp"] = [
   {
     alias: "fs",
     description: "Fakespot",
