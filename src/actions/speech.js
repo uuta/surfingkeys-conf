@@ -96,6 +96,5 @@ export const requestToAzure = (synthesizer, pushStream) => {
         synthesizer.close();
       },
     );
-    console.log("Now synthesizing to speaker output.");
   });
 };

@@ -45,6 +45,7 @@
         "VariableDeclarator": { "var": 2, "let": 2, "const": 3 }
       }
     ],
-    "func-names": "off"
+    "func-names": "off",
+    "object-curly-newline": "off"
   }
 }
