@@ -283,12 +283,6 @@ maps.global = [
     },
   },
   {
-    alias: "F",
-    map: "gf",
-    category: categories.mouseClick,
-    description: "Open a link in non-active new tab",
-  },
-  {
     alias: "oh",
     category: categories.omnibar,
     description: "Open URL from history",
