@@ -1,11 +1,11 @@
 export default `
   body {
-    font-family: "Input Mono", "DejaVu Sans Mono", DejaVu, Arial, sans-serif;
+    font-family: "Electrolize", "Osaka", "Input Mono", "DejaVu Sans Mono", DejaVu, Arial, sans-serif;
     font-size: 12pt;
   }
 
   #sk_keystroke kbd {
-    font-family: "Sudo Nerd Font Mono", "Sudo Mono", "Sudo",
+    font-family: "Electrolize", "Osaka", "Sudo Nerd Font Mono", "Sudo Mono", "Sudo",
       "Input Mono Nerd Font", "Input Mono", "DejaVu Sans Mono", "DejaVu", "Arial",
       sans-serif;
     font-size: 10pt;
@@ -94,7 +94,7 @@ export default `
     }
 
     #sk_omnibar {
-      background-color: #2a323e;
+      background-color: #16213E;
       color: #cad1d7;
     }
 
@@ -103,7 +103,7 @@ export default `
     }
 
     #sk_omnibar .separator {
-      color: #8af4ff !important;
+      color: #cc4b9c !important;
       padding-left: 8px !important;
     }
 
@@ -116,7 +116,7 @@ export default `
     }
 
     #sk_omnibar li.focused {
-      background: #181d24 !important;
+      background: #1A1A2E !important;
       color: #eef5fb !important;
     }
 
@@ -149,4 +149,4 @@ export default `
   .collapseRichHints {
     animation: none;
   }
-`
+`;
