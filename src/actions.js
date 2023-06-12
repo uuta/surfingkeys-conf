@@ -5,6 +5,7 @@ import priv from "./conf.priv.js";
 import util from "./util.js";
 import { configureSpeechSDK, requestToAzure } from "./actions/speech.js";
 import { EnURL } from "./actions/en-url.js";
+import { speech } from "./actions/download.js";
 
 const { tabOpenLink, Front, Hints, Normal, RUNTIME, Clipboard } = api;
 
@@ -1223,6 +1224,13 @@ actions.openEnTabs = () => {
     tabOpenLink(enURL.example());
     tabOpenLink(enURL.meaning());
     tabOpenLink(enURL.speech());
+  });
+};
+
+actions.storeSpeech = () => {
+  Clipboard.read((res) => {
+    const v = res.data;
+    speech(window.location.href, v);
   });
 };
 

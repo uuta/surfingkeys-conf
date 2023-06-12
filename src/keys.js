@@ -300,6 +300,12 @@ maps.global = [
     description: "Open tabs for learning (English)",
     callback: actions.openEnTabs,
   },
+  {
+    alias: "sd",
+    category: categories.visualMode,
+    description: "Download a sound file",
+    callback: actions.storeSpeech,
+  },
   // {
   //   alias:       "\\A",
   //   description: "Open AWS service",
