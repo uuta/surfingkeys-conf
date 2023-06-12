@@ -4,8 +4,9 @@ import api from "./api.js";
 import priv from "./conf.priv.js";
 import util from "./util.js";
 import { configureSpeechSDK, requestToAzure } from "./actions/speech.js";
+import { EnURL } from "./actions/en-url.js";
 
-const { tabOpenLink, Front, Hints, Normal, RUNTIME } = api;
+const { tabOpenLink, Front, Hints, Normal, RUNTIME, Clipboard } = api;
 
 const actions = {};
 
@@ -1212,6 +1213,17 @@ actions.doi.getLink = (provider) => {
 actions.textToSpeech = () => {
   const { synthesizer, pushStream } = configureSpeechSDK();
   requestToAzure(synthesizer, pushStream);
+};
+
+actions.openEnTabs = () => {
+  Clipboard.read((res) => {
+    const v = res.data;
+    const enURL = new EnURL(v);
+    tabOpenLink(enURL.playPhrase());
+    tabOpenLink(enURL.example());
+    tabOpenLink(enURL.meaning());
+    tabOpenLink(enURL.speech());
+  });
 };
 
 export default actions;

@@ -294,6 +294,12 @@ maps.global = [
     description: "Text to speech (English)",
     callback: actions.textToSpeech,
   },
+  {
+    alias: "ow",
+    category: categories.visualMode,
+    description: "Open tabs for learning (English)",
+    callback: actions.openEnTabs,
+  },
   // {
   //   alias:       "\\A",
   //   description: "Open AWS service",

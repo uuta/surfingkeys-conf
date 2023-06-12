@@ -3,8 +3,9 @@ import priv from "../conf.priv.js";
 
 const { Clipboard } = api;
 
-/* Azure Speech resources */
-/* https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal#synthesize-to-file-output */
+/* Azure Speech services */
+/* @see: https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal#synthesize-to-file-output */
+/* @see: https://speech.microsoft.com/portal/voicegallery */
 export const configureSpeechSDK = () => {
   const speechConfig = sdk.SpeechConfig.fromSubscription(
     priv.keys.speech_key,
@@ -71,8 +72,6 @@ export const requestToAzure = (synthesizer, pushStream) => {
       text,
       async (result) => {
         if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-          console.log("synthesis finished.");
-
           // Convert the push stream to a blob and create a URL for it
           const audioBlob = await readAllFromStream(pushStream);
           const audioUrl = URL.createObjectURL(audioBlob);
