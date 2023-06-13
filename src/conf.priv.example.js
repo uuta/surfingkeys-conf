@@ -39,6 +39,10 @@ const keys = {
   // https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal
   speech_key: "",
   speech_region: "",
+
+  // ****** Jira ****** //
+  jira_assignee_id: "",
+  jira_board_id: "",
 };
 
 // A function which accepts a Digital Object Identifier (DOI) and returns a URL,

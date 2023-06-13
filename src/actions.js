@@ -1246,4 +1246,9 @@ actions.openMyPR = () => {
   tabOpenLink(url);
 };
 
+actions.openAssignedTasks = () => {
+  const url = `https://socialdog.atlassian.net/jira/software/c/projects/SW/boards/${priv.keys.jira_board_id}?assignee=${priv.keys.jira_assignee_id}`;
+  tabOpenLink(url);
+};
+
 export default actions;

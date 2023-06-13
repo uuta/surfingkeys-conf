@@ -308,16 +308,22 @@ maps.global = [
     callback: actions.storeSpeech,
   },
   {
-    alias: "gv",
+    alias: "or",
     category: categories.visualMode,
     description: "Go to PR review requests",
     callback: actions.openGithubReview,
   },
   {
-    alias: "go",
+    alias: "oo",
     category: categories.visualMode,
     description: "Go to My opened PR review",
     callback: actions.openMyPR,
+  },
+  {
+    alias: "oa",
+    category: categories.visualMode,
+    description: "Open assigned tasks",
+    callback: actions.openAssignedTasks,
   },
   // {
   //   alias:       "\\A",
