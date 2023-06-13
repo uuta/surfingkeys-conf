@@ -42,6 +42,7 @@ const unmaps = {
     "<Ctrl-h>",
     "j",
     "k",
+    "go",
   ],
   searchAliases: {
     s: ["g", "d", "b", "e", "w", "s", "h", "y"],
@@ -305,6 +306,18 @@ maps.global = [
     category: categories.visualMode,
     description: "Download a sound file",
     callback: actions.storeSpeech,
+  },
+  {
+    alias: "gv",
+    category: categories.visualMode,
+    description: "Go to PR review requests",
+    callback: actions.openGithubReview,
+  },
+  {
+    alias: "go",
+    category: categories.visualMode,
+    description: "Go to My opened PR review",
+    callback: actions.openMyPR,
   },
   // {
   //   alias:       "\\A",

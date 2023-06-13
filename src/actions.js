@@ -1234,4 +1234,16 @@ actions.storeSpeech = () => {
   });
 };
 
+actions.openGithubReview = () => {
+  const url =
+    "https://github.com/pulls?q=user%3Asocialdog-inc+is%3Apr+is%3Aopen+review-requested%3Auuta+-label%3Awip";
+  tabOpenLink(url);
+};
+
+actions.openMyPR = () => {
+  const url =
+    "https://github.com/pulls?q=user%3Asocialdog-inc+is%3Apr+is%3Aopen+assignee%3Auuta";
+  tabOpenLink(url);
+};
+
 export default actions;
