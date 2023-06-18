@@ -25,6 +25,7 @@
     "quotes": ["warn", "double"],
     "no-cond-assign": ["error", "except-parens"],
     "function-paren-newline": "off",
+    "no-console": "warn",
 
     "prefer-rest-params": "off",
     "no-underscore-dangle": "off",

@@ -47,7 +47,12 @@ const unmaps = {
   searchAliases: {
     s: ["g", "d", "b", "e", "w", "s", "h", "y"],
   },
-  allExcept: { mappings: ["v", "f", "a"], domains: /netflix.com|youtube.com/ },
+  mappingsDomains: [
+    // unmap for Language Reactor avoiding conflicts
+    { mapping: "a", domain: /netflix.com|youtube.com/ },
+    { mapping: "s", domain: /netflix.com|youtube.com/ },
+    { mapping: "d", domain: /netflix.com|youtube.com/ },
+  ],
 };
 
 const maps = {};

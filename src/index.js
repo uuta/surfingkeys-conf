@@ -11,7 +11,6 @@ const {
   Front,
   removeSearchAlias,
   addSearchAlias,
-  unmapAllExcept,
 } = api;
 
 const registerKey = (domain, mapObj, siteleader) => {
@@ -103,8 +102,17 @@ const main = async () => {
     });
   }
 
+  if (conf.searchEngines) {
+    registerSearchEngines(conf.searchEngines, conf.searchleader ?? "o");
+  }
+
+  if (conf.keys && conf.keys.maps) {
+    const { keys } = conf;
+    const { maps, aliases = {} } = keys;
+    registerKeys(maps, aliases, conf.siteleader);
+  }
+
   if (conf.keys && conf.keys.unmaps) {
-    console.log("aaaaaa");
     const { unmaps } = conf.keys;
     if (unmaps.mappings) {
       unmaps.mappings.forEach((m) => unmap(m));
@@ -114,20 +122,9 @@ const main = async () => {
         items.forEach((v) => removeSearchAlias(v, leader));
       });
     }
-    if (unmaps.allExcept) {
-      console.log("unmapping all except", unmaps.allExcept);
-      unmapAllExcept(unmaps.allExcept.mappings, unmaps.allExcept.domains);
+    if (unmaps.mappingsDomains) {
+      unmaps.mappingsDomains.forEach((v) => unmap(v.mapping, v.domain));
     }
-  }
-
-  if (conf.searchEngines) {
-    registerSearchEngines(conf.searchEngines, conf.searchleader ?? "o");
-  }
-
-  if (conf.keys && conf.keys.maps) {
-    const { keys } = conf;
-    const { maps, aliases = {} } = keys;
-    registerKeys(maps, aliases, conf.siteleader);
   }
 };
 
