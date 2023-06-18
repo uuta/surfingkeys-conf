@@ -11,33 +11,7 @@ const {
   Front,
   removeSearchAlias,
   addSearchAlias,
-  Visual,
-  Hints,
 } = api;
-
-Visual.style("marks", "background: unset; background-color: #37b71d");
-Visual.style("cursor", "background: unset; background-color: #37b71d");
-Hints.style(
-  " \
-  font-family: Earth Orbiter, Osaka, Input Sans Condensed, Charcoal, sans-serif; \
-  font-size: 13px; \
-  font-weight: 400; \
-  border: unset; \
-  padding: 3px; \
-  color: #ffffff; \
-  background: unset; \
-  background-color: #002B36; \
-",
-);
-Hints.style(
-  "\
-  font-family: Earth Orbiter, Osaka, Input Sans Condensed, Charcoal, sans-serif; \
-  border: solid 1px #37b71d;\
-  padding: 1px;\
-  color: #fff;\
-  background: #37b71d",
-  "text",
-);
 
 const registerKey = (domain, mapObj, siteleader) => {
   const {

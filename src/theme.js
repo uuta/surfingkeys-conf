@@ -1,3 +1,31 @@
+import api from "./api.js";
+
+const { Visual, Hints } = api;
+
+Visual.style("marks", "background: unset; background-color: #ff7a75");
+Visual.style("cursor", "background: unset; background-color: #ff7a75");
+Hints.style(
+  " \
+  font-family: Earth Orbiter, Osaka, Input Sans Condensed, Charcoal, sans-serif; \
+  font-size: 13px; \
+  font-weight: 400; \
+  border: unset; \
+  padding: 3px; \
+  color: #fff; \
+  background: unset; \
+  background-color: #1A1A2E; \
+",
+);
+Hints.style(
+  "\
+  font-family: Earth Orbiter, Osaka, Input Sans Condensed, Charcoal, sans-serif; \
+  border: solid 1px #ff7a75;\
+  padding: 1px;\
+  color: #fff;\
+  background: #ff7a75",
+  "text",
+);
+
 export default `
   body {
     font-family: "Electrolize", "Osaka", "Input Mono", "DejaVu Sans Mono", DejaVu, Arial, sans-serif;
