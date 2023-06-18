@@ -598,7 +598,7 @@ maps["github.com"] = [
     callback: actions.gh.openUser,
   },
   {
-    alias: "f",
+    alias: "F",
     description: "View File",
     callback: actions.gh.openFile,
   },
