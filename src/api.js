@@ -1,23 +1,23 @@
 // polyfill getBrowserName for pre-1.0
 const getBrowserName = () => {
   if (window.navigator.userAgent.indexOf("Chrome") !== -1) {
-    return "Chrome"
+    return "Chrome";
   }
   if (window.navigator.vendor.indexOf("Apple Computer, Inc.") === 0) {
     const isIOS =
       /iPad|iPhone|iPod/.test(navigator.platform) ||
-      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
-    return isIOS ? "Safari-iOS" : "Safari"
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    return isIOS ? "Safari-iOS" : "Safari";
   }
   if (window.navigator.userAgent.indexOf("Firefox") !== -1) {
-    return "Firefox"
+    return "Firefox";
   }
-  return "Chrome"
-}
+  return "Chrome";
+};
 
 const getApi = () => {
   if (typeof window === "undefined") {
-    return {}
+    return {};
   }
 
   if (typeof api !== "undefined") {
@@ -25,7 +25,7 @@ const getApi = () => {
     return {
       v1: true,
       ...api,
-    }
+    };
   }
 
   // Surfingkeys < 1.0
@@ -64,7 +64,7 @@ const getApi = () => {
     vmap,
     vmapkey,
     /* eslint-enable no-use-before-define,no-undef */
-  }
-}
+  };
+};
 
-export default getApi()
+export default getApi();

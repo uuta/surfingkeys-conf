@@ -1,5 +1,6 @@
 import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 import priv from "../conf.priv.js";
+import api from "../api.js";
 
 const { Clipboard } = api;
 

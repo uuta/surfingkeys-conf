@@ -431,21 +431,21 @@ task(
 const watch = (g, t) => () =>
   gulp.watch(g, { ignoreInitial: false, usePolling: true }, t);
 
-const srcWatchPat = getSrcPath("*.(js|mjs|css)");
+const srcWatchPath = getSrcPath("*.(js|mjs|css)");
 
-task("watch-build", watch(srcWatchPat, series("build")));
-task("watch-install", watch(srcWatchPat, series("install")));
+task("watch-build", watch(srcWatchPath, series("build")));
+task("watch-install", watch(srcWatchPath, series("install")));
 task(
   "watch-docs",
   watch(
-    [srcWatchPat, getPath(paths.readme), getPath(paths.assets, "**/*")],
+    [srcWatchPath, getPath(paths.readme), getPath(paths.assets, "**/*")],
     series("docs"),
   ),
 );
 task(
   "watch-docs-full",
   watch(
-    [srcWatchPat, getPath(paths.readme), getPath(paths.assets, "**/*")],
+    [srcWatchPath, getPath(paths.readme), getPath(paths.assets, "**/*")],
     series("docs-full"),
   ),
 );
