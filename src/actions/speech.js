@@ -80,7 +80,7 @@ export const requestToAzure = (synthesizer, pushStream) => {
           // Create a link to download the file
           const downloadLink = document.createElement("a");
           downloadLink.href = audioUrl;
-          downloadLink.download = `${text}.wav`;
+          downloadLink.download = `${text}.mp3`;
           document.body.appendChild(downloadLink);
           downloadLink.click();
           document.body.removeChild(downloadLink);
