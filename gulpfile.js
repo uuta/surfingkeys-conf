@@ -431,7 +431,7 @@ task(
 const watch = (g, t) => () =>
   gulp.watch(g, { ignoreInitial: false, usePolling: true }, t);
 
-const srcWatchPath = getSrcPath("*.(js|mjs|css)");
+const srcWatchPath = getSrcPath("**/*.(js|css)");
 
 task("watch-build", watch(srcWatchPath, series("build")));
 task("watch-install", watch(srcWatchPath, series("install")));
@@ -454,5 +454,3 @@ task("watch", series("watch-install"));
 task("serve-simple", serve);
 task("serve-build", parallel("watch-build", "serve-simple"));
 task("serve", series("serve-build"));
-
-task("default", series("build"));

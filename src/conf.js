@@ -1,6 +1,6 @@
-import theme from "./theme.js"
-import keys from "./keys.js"
-import searchEngines from "./search-engines.js"
+import theme from "./theme.js";
+import keys from "./keys.js";
+import searchEngines from "./search-engines.js";
 
 export default {
   settings: {
@@ -27,4 +27,4 @@ export default {
     // "warn",
     "error",
   ],
-}
+};
