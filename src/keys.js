@@ -47,6 +47,7 @@ const unmaps = {
   searchAliases: {
     s: ["g", "d", "b", "e", "w", "s", "h", "y"],
   },
+  allExcept: { mappings: ["v", "f", "a"], domains: /netflix.com|youtube.com/ },
 };
 
 const maps = {};

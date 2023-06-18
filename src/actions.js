@@ -39,7 +39,7 @@ actions.moveTabNextToTab = (targetId, nextTo, leftOf = false) =>
 actions.dispatchEvents = (type, node, ...eventTypes) =>
   eventTypes.forEach((t) => {
     const e = document.createEvent(type);
-    e.initEvent(t, true, true);
+    e.Event(t, true, true);
     node.dispatchEvent(e);
   });
 
