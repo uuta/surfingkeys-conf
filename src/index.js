@@ -102,16 +102,6 @@ const main = async () => {
     });
   }
 
-  if (conf.searchEngines) {
-    registerSearchEngines(conf.searchEngines, conf.searchleader ?? "o");
-  }
-
-  if (conf.keys && conf.keys.maps) {
-    const { keys } = conf;
-    const { maps, aliases = {} } = keys;
-    registerKeys(maps, aliases, conf.siteleader);
-  }
-
   if (conf.keys && conf.keys.unmaps) {
     const { unmaps } = conf.keys;
     if (unmaps.mappings) {
@@ -122,9 +112,22 @@ const main = async () => {
         items.forEach((v) => removeSearchAlias(v, leader));
       });
     }
-    if (unmaps.mappingsDomains) {
-      unmaps.mappingsDomains.forEach((v) => unmap(v.mapping, v.domain));
-    }
+  }
+
+  if (conf.searchEngines) {
+    registerSearchEngines(conf.searchEngines, conf.searchleader ?? "o");
+  }
+
+  if (conf.keys && conf.keys.maps) {
+    const { keys } = conf;
+    const { maps, aliases = {} } = keys;
+    registerKeys(maps, aliases, conf.siteleader);
+  }
+
+  // Unmap only in the specified domains
+  if (conf?.keys?.unmaps?.mappingsDomains) {
+    const { mappingsDomains } = conf.keys.unmaps;
+    mappingsDomains.forEach((v) => unmap(v.mapping, v.domain));
   }
 };
 
