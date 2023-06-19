@@ -48,10 +48,13 @@ const unmaps = {
     s: ["g", "d", "b", "e", "w", "s", "h", "y"],
   },
   mappingsDomains: [
-    // unmap for Language Reactor avoiding conflicts
+    // Unmap for Language Reactor avoiding conflicts
     { mapping: "a", domain: /netflix.com|youtube.com/ },
     { mapping: "s", domain: /netflix.com|youtube.com/ },
     { mapping: "d", domain: /netflix.com|youtube.com/ },
+    // Google Search
+    { mapping: "l", domain: /google.com\/search/ },
+    { mapping: "h", domain: /google.com\/search/ },
   ],
 };
 
