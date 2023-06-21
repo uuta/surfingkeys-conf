@@ -1235,14 +1235,12 @@ actions.storeSpeech = () => {
 };
 
 actions.openGithubReview = () => {
-  const url =
-    "https://github.com/pulls?q=user%3Asocialdog-inc+is%3Apr+is%3Aopen+review-requested%3Auuta+-label%3Awip";
+  const url = `https://github.com/pulls?q=user%3A${priv.keys.github_org}+is%3Apr+is%3Aopen+review-requested%3A${priv.keys.github_user_name}+-label%3Awip+draft%3Afalse`;
   tabOpenLink(url);
 };
 
 actions.openMyPR = () => {
-  const url =
-    "https://github.com/pulls?q=user%3Asocialdog-inc+is%3Apr+is%3Aopen+assignee%3Auuta";
+  const url = `https://github.com/pulls?q=user%3A${priv.keys.github_org}+is%3Apr+is%3Aopen+assignee%3A${priv.keys.github_user_name}`;
   tabOpenLink(url);
 };
 

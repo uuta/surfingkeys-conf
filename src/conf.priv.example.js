@@ -40,6 +40,10 @@ const keys = {
   speech_key: "",
   speech_region: "",
 
+  // ****** GitHub ****** //
+  github_org: "",
+  github_user_name: "",
+
   // ****** Jira ****** //
   jira_assignee_id: "",
   jira_board_id: "",
