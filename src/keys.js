@@ -302,7 +302,7 @@ maps.global = [
     alias: ";s",
     category: categories.visualMode,
     description: "Text to speech (English)",
-    callback: actions.textToSpeech,
+    callback: actions.textToSpeechEn,
   },
   {
     alias: "ow",

@@ -37,17 +37,17 @@ const keys = {
   // ****** Azure speech services ****** //
   // Obtain environment variables from Azure portal after creating a Speech resource
   // https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal
-  speechKey: "",
-  speechRegion: "",
-  speechVoice: "",
+  speechKey: "7b7cb26c82c3463498941e159870ff00",
+  speechRegion: "eastasia",
+  speechVoice: "en-US-DavisNeural",
 
   // ****** GitHub ****** //
-  githubOrg: "",
-  githubUserName: "",
+  githubOrg: "socialdog-inc",
+  githubUserName: "uuta",
 
   // ****** Jira ****** //
-  jiraAssigneeId: "",
-  jiraBoardId: "",
+  jiraAssigneeId: "62465dfd699649006ae75d89",
+  jiraBoardId: "19",
 };
 
 // A function which accepts a Digital Object Identifier (DOI) and returns a URL,

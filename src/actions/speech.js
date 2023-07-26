@@ -7,12 +7,12 @@ const { Clipboard } = api;
 /* Azure Speech services */
 /* @see: https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal#synthesize-to-file-output */
 /* @see: https://speech.microsoft.com/portal/voicegallery */
-export const configureSpeechSDK = () => {
+export const configureSpeechSDK = (speechVoice) => {
   const speechConfig = sdk.SpeechConfig.fromSubscription(
-    priv.keys.speech_key,
-    priv.keys.speech_region,
+    priv.keys.speechKey,
+    priv.keys.speechRegion,
   );
-  speechConfig.speechSynthesisVoiceName = priv.keys.speech_voice;
+  speechConfig.speechSynthesisVoiceName = speechVoice;
 
   const pushStream = sdk.PullAudioOutputStream.create();
 

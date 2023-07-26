@@ -1211,8 +1211,8 @@ actions.doi.getLink = (provider) => {
   return priv.doi_handler(doi);
 };
 
-actions.textToSpeech = () => {
-  const { synthesizer, pushStream } = configureSpeechSDK();
+actions.textToSpeechEn = () => {
+  const { synthesizer, pushStream } = configureSpeechSDK(priv.keys.speechVoice);
   requestToAzure(synthesizer, pushStream);
 };
 
@@ -1235,17 +1235,17 @@ actions.storeSpeech = () => {
 };
 
 actions.openGithubReview = () => {
-  const url = `https://github.com/pulls?q=user%3A${priv.keys.github_org}+is%3Apr+is%3Aopen+review-requested%3A${priv.keys.github_user_name}+-label%3Awip+draft%3Afalse`;
+  const url = `https://github.com/pulls?q=user%3A${priv.keys.githubOrg}+is%3Apr+is%3Aopen+review-requested%3A${priv.keys.githubUserName}+-label%3Awip+draft%3Afalse`;
   tabOpenLink(url);
 };
 
 actions.openMyPR = () => {
-  const url = `https://github.com/pulls?q=user%3A${priv.keys.github_org}+is%3Apr+is%3Aopen+assignee%3A${priv.keys.github_user_name}`;
+  const url = `https://github.com/pulls?q=user%3A${priv.keys.githubOrg}+is%3Apr+is%3Aopen+assignee%3A${priv.keys.githubUserName}`;
   tabOpenLink(url);
 };
 
 actions.openAssignedTasks = () => {
-  const url = `https://socialdog.atlassian.net/jira/software/c/projects/SW/boards/${priv.keys.jira_board_id}?assignee=${priv.keys.jira_assignee_id}`;
+  const url = `https://socialdog.atlassian.net/jira/software/c/projects/SW/boards/${priv.keys.jiraBoardId}?assignee=${priv.keys.jiraAssigneeId}`;
   tabOpenLink(url);
 };
 
