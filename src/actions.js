@@ -1212,7 +1212,18 @@ actions.doi.getLink = (provider) => {
 };
 
 actions.textToSpeechEn = () => {
-  const { synthesizer, pushStream } = configureSpeechSDK(priv.keys.speechVoice);
+  const { synthesizer, pushStream } = configureSpeechSDK(
+    priv.keys.speechVoiceEn,
+    "en-US",
+  );
+  requestToAzure(synthesizer, pushStream);
+};
+
+actions.textToSpeechZh = () => {
+  const { synthesizer, pushStream } = configureSpeechSDK(
+    priv.keys.speechVoiceZh,
+    "zh-CN",
+  );
   requestToAzure(synthesizer, pushStream);
 };
 

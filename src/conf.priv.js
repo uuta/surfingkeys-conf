@@ -39,7 +39,8 @@ const keys = {
   // https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal
   speechKey: "7b7cb26c82c3463498941e159870ff00",
   speechRegion: "eastasia",
-  speechVoice: "en-US-DavisNeural",
+  speechVoiceEn: "en-US-DavisNeural",
+  speechVoiceZh: "zh-TW-YunJheNeural",
 
   // ****** GitHub ****** //
   githubOrg: "socialdog-inc",

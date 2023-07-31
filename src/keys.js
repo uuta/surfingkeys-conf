@@ -299,10 +299,16 @@ maps.global = [
     callback: () => Front.openOmnibar({ type: "History" }),
   },
   {
-    alias: ";s",
+    alias: "se",
     category: categories.visualMode,
     description: "Text to speech (English)",
     callback: actions.textToSpeechEn,
+  },
+  {
+    alias: "sz",
+    category: categories.visualMode,
+    description: "Text to speech (Chinese (Taiwan))",
+    callback: actions.textToSpeechZh,
   },
   {
     alias: "ow",
