@@ -340,6 +340,18 @@ maps.global = [
     description: "Open assigned tasks",
     callback: actions.openAssignedTasks,
   },
+  {
+    alias: "ot",
+    category: categories.visualMode,
+    description: "Open team tasks",
+    callback: actions.openTeamTasks,
+  },
+  {
+    alias: "cm",
+    category: categories.visualMode,
+    description: "Copy title and link to markdown",
+    callback: () => actions.copyTitleAndUrl("[%TITLE%](%URL%)"),
+  },
   // {
   //   alias:       "\\A",
   //   description: "Open AWS service",

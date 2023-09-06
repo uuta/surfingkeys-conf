@@ -49,6 +49,10 @@ const keys = {
   // ****** Jira ****** //
   jiraAssigneeId: "62465dfd699649006ae75d89",
   jiraBoardId: "19",
+  jiraAssighedTaskURL:
+    "https://socialdog.atlassian.net/jira/software/c/projects/SW/boards/19?assignee=62465dfd699649006ae75d89",
+  jiraTeamTaskURL:
+    "https://socialdog.atlassian.net/jira/software/c/projects/SW/boards/39",
 };
 
 // A function which accepts a Digital Object Identifier (DOI) and returns a URL,

@@ -1256,8 +1256,20 @@ actions.openMyPR = () => {
 };
 
 actions.openAssignedTasks = () => {
-  const url = `https://socialdog.atlassian.net/jira/software/c/projects/SW/boards/${priv.keys.jiraBoardId}?assignee=${priv.keys.jiraAssigneeId}`;
+  const url = `${priv.keys.jiraAssighedTaskURL}`;
   tabOpenLink(url);
+};
+
+actions.openTeamTasks = () => {
+  const url = `${priv.keys.jiraTeamTaskURL}`;
+  tabOpenLink(url);
+};
+
+actions.copyTitleAndUrl = (format) => {
+  const text = format
+    .replace("%URL%", location.href)
+    .replace("%TITLE%", document.title);
+  Clipboard.write(text);
 };
 
 export default actions;
