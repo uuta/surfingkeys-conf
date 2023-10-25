@@ -43,8 +43,9 @@ const keys = {
   speechVoiceZh: "zh-TW-YunJheNeural",
 
   // ****** GitHub ****** //
-  githubOrg: "socialdog-inc",
-  githubUserName: "uuta",
+  gitHubOrg: "socialdog-inc",
+  gitHubRepository: "socialdog",
+  gitHubUserName: "uuta",
 
   // ****** Jira ****** //
   jiraAssigneeId: "62465dfd699649006ae75d89",

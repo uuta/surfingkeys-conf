@@ -335,6 +335,12 @@ maps.global = [
     callback: actions.openMyPR,
   },
   {
+    alias: "op",
+    category: categories.visualMode,
+    description: "Go to opened PR review",
+    callback: actions.openPR,
+  },
+  {
     alias: "oa",
     category: categories.visualMode,
     description: "Open assigned tasks",

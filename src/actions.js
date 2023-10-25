@@ -1246,12 +1246,17 @@ actions.storeSpeech = () => {
 };
 
 actions.openGithubReview = () => {
-  const url = `https://github.com/pulls?q=user%3A${priv.keys.githubOrg}+is%3Apr+is%3Aopen+review-requested%3A${priv.keys.githubUserName}+-label%3Awip+draft%3Afalse`;
+  const url = `https://github.com/pulls?q=user%3A${priv.keys.gitHubOrg}+is%3Apr+is%3Aopen+review-requested%3A${priv.keys.gitHubUserName}+-label%3Awip+draft%3Afalse`;
   tabOpenLink(url);
 };
 
 actions.openMyPR = () => {
-  const url = `https://github.com/pulls?q=user%3A${priv.keys.githubOrg}+is%3Apr+is%3Aopen+assignee%3A${priv.keys.githubUserName}`;
+  const url = `https://github.com/pulls?q=user%3A${priv.keys.gitHubOrg}+is%3Apr+is%3Aopen+assignee%3A${priv.keys.gitHubUserName}`;
+  tabOpenLink(url);
+};
+
+actions.openPR = () => {
+  const url = `https://github.com/socialdog-inc/${priv.keys.gitHubRepository}/pulls`;
   tabOpenLink(url);
 };
 

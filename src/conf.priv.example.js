@@ -44,6 +44,7 @@ const keys = {
 
   // ****** GitHub ****** //
   githubOrg: "",
+  gitHubRepository: "",
   githubUserName: "",
 
   // ****** Jira ****** //
