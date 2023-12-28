@@ -353,6 +353,12 @@ maps.global = [
     callback: actions.openTeamTasks,
   },
   {
+    alias: "of",
+    category: categories.visualMode,
+    description: "Open GitHub forks",
+    callback: actions.openCurrentFork,
+  },
+  {
     alias: "cm",
     category: categories.visualMode,
     description: "Copy title and link to markdown",

@@ -1277,4 +1277,15 @@ actions.copyTitleAndUrl = (format) => {
   Clipboard.write(text);
 };
 
+actions.openCurrentFork = () => {
+  const url = window.location.href;
+  const strings = url.match(/github\.com\/([^\/]+)\/([^\/]+)[\?.*]/);
+  if (strings.length < 3) {
+    Front.showBanner("Not a github url");
+    return;
+  }
+  const target = `https://api.github.com/repos/${strings[1]}/${strings[2]}/forks?sort=watchers`;
+  tabOpenLink(target);
+};
+
 export default actions;
