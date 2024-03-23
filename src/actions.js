@@ -1288,4 +1288,9 @@ actions.openCurrentFork = () => {
   tabOpenLink(target);
 };
 
+actions.openMyClosedPR = () => {
+  const url = `https://github.com/pulls?q=user%3A${priv.keys.gitHubOrg}+is%3Apr+is%3Aclosed+assignee%3A${priv.keys.gitHubUserName}`;
+  tabOpenLink(url);
+};
+
 export default actions;

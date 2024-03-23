@@ -359,6 +359,12 @@ maps.global = [
     callback: actions.openCurrentFork,
   },
   {
+    alias: "oc",
+    category: categories.visualMode,
+    description: "Open assigned and closed PR",
+    callback: actions.openMyClosedPR,
+  },
+  {
     alias: "cm",
     category: categories.visualMode,
     description: "Copy title and link to markdown",
