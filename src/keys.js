@@ -370,6 +370,12 @@ maps.global = [
     description: "Copy title and link to markdown",
     callback: () => actions.copyTitleAndUrl("[%TITLE%](%URL%)"),
   },
+  {
+    alias: ";",
+    map: "<Alt-s>",
+    category: categories.visualMode,
+    description: "Toggle Surfingkeys",
+  },
   // {
   //   alias:       "\\A",
   //   description: "Open AWS service",
