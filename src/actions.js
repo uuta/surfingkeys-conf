@@ -1277,6 +1277,10 @@ actions.copyTitleAndUrl = (format) => {
   Clipboard.write(text);
 };
 
+actions.copyTitle = () => {
+  Clipboard.write(document.title);
+};
+
 actions.openCurrentFork = () => {
   const url = window.location.href;
   const strings = url.match(/github\.com\/([^\/]+)\/([^\/]+)[\?.*]/);

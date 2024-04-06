@@ -371,6 +371,12 @@ maps.global = [
     callback: () => actions.copyTitleAndUrl("[%TITLE%](%URL%)"),
   },
   {
+    alias: "ct",
+    category: categories.visualMode,
+    description: "Copy title",
+    callback: () => actions.copyTitle(),
+  },
+  {
     alias: ";",
     map: "<Alt-s>",
     category: categories.visualMode,
