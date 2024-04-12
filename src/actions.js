@@ -1281,6 +1281,12 @@ actions.copyTitle = () => {
   Clipboard.write(document.title);
 };
 
+actions.copyDescription = () => {
+  Clipboard.write(
+    document.querySelector("meta[name='description']").getAttribute("content"),
+  );
+};
+
 actions.openCurrentFork = () => {
   const url = window.location.href;
   const strings = url.match(/github\.com\/([^\/]+)\/([^\/]+)[\?.*]/);

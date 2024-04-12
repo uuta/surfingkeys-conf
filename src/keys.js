@@ -371,10 +371,10 @@ maps.global = [
     callback: () => actions.copyTitleAndUrl("[%TITLE%](%URL%)"),
   },
   {
-    alias: "ct",
+    alias: "cd",
     category: categories.visualMode,
-    description: "Copy title",
-    callback: () => actions.copyTitle(),
+    description: "Copy description",
+    callback: () => actions.copyDescription(),
   },
   {
     alias: ";",
