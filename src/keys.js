@@ -311,17 +311,23 @@ maps.global = [
     callback: actions.textToSpeechZh,
   },
   {
+    alias: "sd",
+    category: categories.visualMode,
+    description: "Text to speech (German)",
+    callback: actions.textToSpeechDe,
+  },
+  {
     alias: "ow",
     category: categories.visualMode,
     description: "Open tabs for learning (English)",
     callback: actions.openEnTabs,
   },
-  {
-    alias: "sd",
-    category: categories.visualMode,
-    description: "Download a sound file",
-    callback: actions.storeSpeech,
-  },
+  // {
+  //   alias: "sd",
+  //   category: categories.visualMode,
+  //   description: "Download a sound file",
+  //   callback: actions.storeSpeech,
+  // },
   {
     alias: "or",
     category: categories.visualMode,

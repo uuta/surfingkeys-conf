@@ -1227,6 +1227,14 @@ actions.textToSpeechZh = () => {
   requestToAzure(synthesizer, pushStream);
 };
 
+actions.textToSpeechDe = () => {
+  const { synthesizer, pushStream } = configureSpeechSDK(
+    priv.keys.speechVoiceDe,
+    "de-DE",
+  );
+  requestToAzure(synthesizer, pushStream);
+};
+
 actions.openEnTabs = () => {
   Clipboard.read((res) => {
     const v = res.data;
