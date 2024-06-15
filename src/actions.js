@@ -1311,4 +1311,9 @@ actions.openMyClosedPR = () => {
   tabOpenLink(url);
 };
 
+actions.openEnglishMaster = () => {
+  const url = "https://chatgpt.com/g/g-7q9OqKdwj-english-master";
+  tabOpenLink(url);
+};
+
 export default actions;

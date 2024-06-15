@@ -30,7 +30,6 @@ const unmaps = {
     "zQ",
     "zz",
     "zR",
-    "ab",
     "Q",
     "q",
     "ag",
@@ -387,6 +386,12 @@ maps.global = [
     map: "<Alt-s>",
     category: categories.visualMode,
     description: "Toggle Surfingkeys",
+  },
+  {
+    alias: "oe",
+    category: categories.visualMode,
+    description: "Open English Master",
+    callback: actions.openEnglishMaster,
   },
   // {
   //   alias:       "\\A",
