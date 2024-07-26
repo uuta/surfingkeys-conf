@@ -393,6 +393,12 @@ maps.global = [
     description: "Open English Master",
     callback: actions.openEnglishMaster,
   },
+  {
+    alias: "cb",
+    category: categories.visualMode,
+    description: "Copy title and link for Scrapbox",
+    callback: () => actions.copyTitleAndUrl("[%URL% %TITLE%]"),
+  },
   // {
   //   alias:       "\\A",
   //   description: "Open AWS service",
