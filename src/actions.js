@@ -1212,27 +1212,23 @@ actions.doi.getLink = (provider) => {
 };
 
 actions.textToSpeechEn = () => {
-  const { synthesizer, pushStream } = configureSpeechSDK(
-    priv.keys.speechVoiceEn,
-    "en-US",
-  );
-  requestToAzure(synthesizer, pushStream);
+  const { synthesizer, pushStream } = configureSpeechSDK();
+  requestToAzure(synthesizer, pushStream, priv.keys.speechVoiceEn, "en-US");
 };
 
 actions.textToSpeechZh = () => {
-  const { synthesizer, pushStream } = configureSpeechSDK(
-    priv.keys.speechVoiceZh,
-    "zh-CN",
-  );
-  requestToAzure(synthesizer, pushStream);
+  const { synthesizer, pushStream } = configureSpeechSDK();
+  requestToAzure(synthesizer, pushStream, priv.keys.speechVoiceZh, "zh-CN");
 };
 
 actions.textToSpeechDe = () => {
-  const { synthesizer, pushStream } = configureSpeechSDK(
-    priv.keys.speechVoiceDe,
-    "de-DE",
-  );
-  requestToAzure(synthesizer, pushStream);
+  const { synthesizer, pushStream } = configureSpeechSDK();
+  requestToAzure(synthesizer, pushStream, priv.keys.speechVoiceDe, "de-DE");
+};
+
+actions.textToSpeechTh = () => {
+  const { synthesizer, pushStream } = configureSpeechSDK();
+  requestToAzure(synthesizer, pushStream, priv.keys.speechVoiceTh, "th-TH");
 };
 
 actions.openEnTabs = () => {

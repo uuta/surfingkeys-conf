@@ -43,6 +43,7 @@ const keys = {
   speechVoiceEn: "",
   speechVoiceZh: "",
   speechVoiceDe: "",
+  speechVoiceTh: "",
 
   // ****** GitHub ****** //
   githubOrg: "",

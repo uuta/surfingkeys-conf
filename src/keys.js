@@ -316,6 +316,12 @@ maps.global = [
     callback: actions.textToSpeechDe,
   },
   {
+    alias: "st",
+    category: categories.visualMode,
+    description: "Text to speech (Thai)",
+    callback: actions.textToSpeechTh,
+  },
+  {
     alias: "ow",
     category: categories.visualMode,
     description: "Open tabs for learning (English)",

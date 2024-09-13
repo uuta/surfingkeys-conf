@@ -12,8 +12,8 @@ export const configureSpeechSDK = (speechVoice, lang) => {
     priv.keys.speechKey,
     priv.keys.speechRegion,
   );
-  speechConfig.speechSynthesisVoiceName = speechVoice;
-  speechConfig.speechSynthesisLanguage = lang;
+  // speechConfig.speechSynthesisVoiceName = speechVoice;
+  // speechConfig.speechSynthesisLanguage = lang;
 
   const pushStream = sdk.PullAudioOutputStream.create();
 
@@ -62,7 +62,7 @@ const readAllFromStream = async (pushStream) => {
   return new Blob(receivedData, { type: "audio/wav" });
 };
 
-export const requestToAzure = (synthesizer, pushStream) => {
+export const requestToAzure = (synthesizer, pushStream, speechVoice, lang) => {
   return new Promise((_resolve, reject) => {
     Clipboard.read((response) => {
       const text = response.data;
@@ -71,8 +71,19 @@ export const requestToAzure = (synthesizer, pushStream) => {
         reject("Clipboard is empty");
         return;
       }
-      synthesizer.speakTextAsync(
-        text,
+      const ssml = `
+        <speak xmlns='http://www.w3.org/2001/10/synthesis'
+          xmlns:mstts='http://www.w3.org/2001/mstts'
+          xmlns:emo='http://www.w3.org/2009/10/emotionml'
+          version='1.0' xml:lang='${lang}'>
+          <voice name='${speechVoice}' style='default' rate='20%'>
+            ${text}
+          </voice>
+        </speak>`;
+      synthesizer.speakSsmlAsync(
+        ssml,
+        // synthesizer.speakTextAsync(
+        //   text,
         async (result) => {
           if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
             try {
