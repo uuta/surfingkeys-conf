@@ -1231,6 +1231,11 @@ actions.textToSpeechTh = () => {
   requestToAzure(synthesizer, pushStream, priv.keys.speechVoiceTh, "th-TH");
 };
 
+actions.textToSpeechRu = () => {
+  const { synthesizer, pushStream } = configureSpeechSDK();
+  requestToAzure(synthesizer, pushStream, priv.keys.speechVoiceRu, "ru-RU");
+};
+
 actions.openEnTabs = () => {
   Clipboard.read((res) => {
     const v = res.data;
