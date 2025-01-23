@@ -1,5 +1,7 @@
 *.priv.js
 
+.DS_Store
+
 ### Node ###
 # Logs
 logs
@@ -64,3 +66,4 @@ typings/
 # dotenv environment variables file
 .env
 worktree/
+
