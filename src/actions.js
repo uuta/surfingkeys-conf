@@ -1254,18 +1254,18 @@ actions.storeSpeech = () => {
   });
 };
 
-actions.openGithubReview = () => {
-  const url = `https://github.com/pulls?q=user%3A${priv.keys.gitHubOrg}+is%3Apr+is%3Aopen+review-requested%3A${priv.keys.gitHubUserName}+-label%3Awip+draft%3Afalse`;
+actions.openGithubReview = (org) => {
+  const url = `https://github.com/pulls?q=user%3A${org}+is%3Apr+is%3Aopen+review-requested%3A${priv.keys.gitHubUserName}+-label%3Awip+draft%3Afalse`;
   tabOpenLink(url);
 };
 
-actions.openMyPR = () => {
-  const url = `https://github.com/pulls?q=user%3A${priv.keys.gitHubOrg}+is%3Apr+is%3Aopen+assignee%3A${priv.keys.gitHubUserName}`;
+actions.openMyPR = (org) => {
+  const url = `https://github.com/pulls?q=user%3A${org}+is%3Apr+is%3Aopen+assignee%3A${priv.keys.gitHubUserName}`;
   tabOpenLink(url);
 };
 
-actions.openPR = () => {
-  const url = `https://github.com/socialdog-inc/${priv.keys.gitHubRepository}/pulls`;
+actions.openPR = (repository) => {
+  const url = `https://github.com/socialdog-inc/${repository}/pulls`;
   tabOpenLink(url);
 };
 

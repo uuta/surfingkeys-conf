@@ -51,6 +51,10 @@ const keys = {
   gitHubRepository: "",
   githubUserName: "",
 
+  // ****** GitHub ****** //
+  subGithubOrg: "",
+  subGitHubRepository: "",
+
   // ****** Jira ****** //
   jiraAssigneeId: "",
   jiraBoardId: "",
