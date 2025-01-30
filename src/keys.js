@@ -355,25 +355,27 @@ maps.global = [
     alias: "op",
     category: categories.visualMode,
     description: "Go to opened PR review",
-    callback: () => actions.openPR(priv.keys.gitHubRepository),
+    callback: () =>
+      actions.openPR(priv.keys.gitHubOrg, priv.keys.gitHubRepository),
   },
   {
     alias: "ojr",
     category: categories.visualMode,
     description: "Go to PR review requests in sub organization",
-    callback: () => actions.openGithubReview(priv.keys.subGithubOrg),
+    callback: () => actions.openGithubReview(priv.keys.subGitHubOrg),
   },
   {
     alias: "ojo",
     category: categories.visualMode,
     description: "Go to My opened PR review in sub organization",
-    callback: () => actions.openMyPR(priv.keys.subGithubOrg),
+    callback: () => actions.openMyPR(priv.keys.subGitHubOrg),
   },
   {
     alias: "ojp",
     category: categories.visualMode,
     description: "Go to opened PR review",
-    callback: () => actions.openPR(priv.keys.gitHubRepository),
+    callback: () =>
+      actions.openPR(priv.keys.subGitHubOrg, priv.keys.subGitHubRepository),
   },
   {
     alias: "oa",

@@ -47,12 +47,12 @@ const keys = {
   speechVoiceRu: "",
 
   // ****** GitHub ****** //
-  githubOrg: "",
+  gitHubOrg: "",
   gitHubRepository: "",
   githubUserName: "",
 
   // ****** GitHub ****** //
-  subGithubOrg: "",
+  subGitHubOrg: "",
   subGitHubRepository: "",
 
   // ****** Jira ****** //

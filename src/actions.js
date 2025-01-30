@@ -1264,8 +1264,8 @@ actions.openMyPR = (org) => {
   tabOpenLink(url);
 };
 
-actions.openPR = (repository) => {
-  const url = `https://github.com/socialdog-inc/${repository}/pulls`;
+actions.openPR = (org, repository) => {
+  const url = `https://github.com/${org}/${repository}/pulls`;
   tabOpenLink(url);
 };
 
