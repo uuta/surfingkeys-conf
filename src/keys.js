@@ -355,8 +355,7 @@ maps.global = [
     alias: "op",
     category: categories.visualMode,
     description: "Go to opened PR review",
-    callback: () =>
-      actions.openPR(priv.keys.gitHubOrg, priv.keys.gitHubRepository),
+    callback: () => actions.openOpenedGithubPR(priv.keys.gitHubOrg),
   },
   {
     alias: "ojr",
