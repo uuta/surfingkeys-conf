@@ -1285,6 +1285,11 @@ actions.openGithubReview = (org) => {
   tabOpenLink(url);
 };
 
+actions.openOpenedGithubPR = (org) => {
+  const url = `https://github.com/pulls?q=user%3A${org}+is%3Apr+is%3Aopen`;
+  tabOpenLink(url);
+};
+
 actions.openMyPR = (org) => {
   const url = `https://github.com/pulls?q=user%3A${org}+is%3Apr+is%3Aopen+assignee%3A${priv.keys.gitHubUserName}`;
   tabOpenLink(url);
