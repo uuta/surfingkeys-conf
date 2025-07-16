@@ -33,10 +33,14 @@ const registerKey = (domain, mapObj, siteleader) => {
 
   const fullDescription = `#${category} ${description}`;
 
-  if (typeof mapObj.map !== "undefined") {
-    map(alias, mapObj.map);
-  } else {
-    mapkey(key, fullDescription, callback, opts);
+  try {
+    if (typeof mapObj.map !== "undefined") {
+      map(alias, mapObj.map);
+    } else {
+      mapkey(key, fullDescription, callback, opts); // t, n, r, o
+    }
+  } catch (e) {
+    console.error(`Error registering key ${alias}: ${e}`);
   }
 };
 
@@ -97,9 +101,9 @@ const main = async () => {
   }
 
   if (conf.logLevels) {
-    await chrome.storage.local.set({
-      logLevels: conf.logLevels,
-    });
+    // chrome.storage is no longer available in settings snippets in Manifest V3
+    // Log levels would need to be configured differently
+    console.warn("logLevels configuration is not supported in Manifest V3");
   }
 
   if (conf.keys && conf.keys.unmaps) {

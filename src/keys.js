@@ -6,7 +6,7 @@ import util from "./util.js";
 
 const { categories } = help;
 
-const { Clipboard, Front } = api;
+const { Clipboard, Front, Hints } = api;
 
 // Remove undesired default mappings
 const unmaps = {
@@ -109,12 +109,6 @@ maps.global = [
     callback: actions.vimEditURL,
   },
   {
-    alias: "gi",
-    category: categories.pageNav,
-    description: "Edit current URL with vim editor",
-    callback: actions.vimEditURL,
-  },
-  {
     alias: "gI",
     category: categories.pageNav,
     description: "View image in new tab",
@@ -192,11 +186,6 @@ maps.global = [
     callback: actions.editSettings,
   },
   {
-    alias: "gS",
-    category: categories.chromeURLs,
-    description: "Open Chrome settings",
-  },
-  {
     alias: "=W",
     category: categories.misc,
     description: "Lookup whois information for domain",
@@ -240,6 +229,12 @@ maps.global = [
     description: "View social discussions for page",
     callback: () =>
       actions.openLink(actions.getDiscussionsUrl(), { newTab: true }),
+  },
+  {
+    alias: "=S",
+    category: categories.misc,
+    description: "View summary for page",
+    callback: () => actions.openLink(actions.getSummaryUrl(), { newTab: true }),
   },
   {
     alias: "=o",
@@ -609,7 +604,7 @@ maps["youtube.com"] = [
     description: "Toggle fullscreen",
     callback: () =>
       actions.dispatchMouseEvents(
-        document.querySelector("#movie_player.ytp-fullscreen-button"),
+        document.querySelector("#movie_player .ytp-fullscreen-button"),
         "mousedown",
         "click",
       ),
@@ -758,8 +753,13 @@ maps["github.com"] = [
   },
   {
     alias: "D",
-    description: "View GoDoc for Project",
-    callback: actions.viewGodoc,
+    description: "Open in github.dev (new tab)",
+    callback: () => actions.gh.openInDev({ newTab: true }),
+  },
+  {
+    alias: "dd",
+    description: "Open in github.dev",
+    callback: actions.gh.openInDev,
   },
   {
     alias: "G",
@@ -885,6 +885,19 @@ maps["twitter.com"] = [
       util.createHints(
         "article, article div[data-focusable='true'][role='link'][tabindex='0']",
       ),
+  },
+];
+
+maps["bsky.app"] = [
+  {
+    alias: "d",
+    description: "Copy user DID",
+    callback: actions.by.copyDID,
+  },
+  {
+    alias: "p",
+    description: "Copy user post ID",
+    callback: actions.by.copyPostID,
   },
 ];
 
@@ -1414,6 +1427,36 @@ maps["ikea.com"] = [
     description: "Open Orders page",
     callback: () =>
       actions.openLink("/us/en/customer-service/track-manage-order/"),
+  },
+];
+
+maps["chatgpt.com"] = [
+  {
+    alias: "i",
+    leader: "",
+    description: "Focus input",
+    callback: () =>
+      setTimeout(
+        () =>
+          Hints.dispatchMouseClick(document.querySelector("#prompt-textarea")),
+        0,
+      ),
+  },
+];
+
+maps["claude.ai"] = [
+  {
+    alias: "i",
+    leader: "",
+    description: "Focus input",
+    callback: () =>
+      setTimeout(
+        () =>
+          Hints.dispatchMouseClick(
+            document.querySelector(".ProseMirror[contenteditable=true]"),
+          ),
+        0,
+      ),
   },
 ];
 
