@@ -10,10 +10,14 @@ import { deleteAsync } from "del";
 import gulpNotify from "gulp-notify";
 import fs from "fs/promises";
 import url from "url";
+import { createRequire } from "module";
 
 import serve from "./server/index.js";
 import paths, { getPath, getSrcPath } from "./paths.js";
 import webpackConfig from "./webpack.config.js";
+
+const require = createRequire(import.meta.url);
+const pkg = require("./package.json");
 
 const requireJson = async (f) => JSON.parse(await fs.readFile(f));
 const log = (...msg) => process.stderr.write(`${msg.join("\n")}\n`);
@@ -49,8 +53,6 @@ if (WEBPACK_MODE) {
   webpackConfig.mode = WEBPACK_MODE;
   log(`Using webpack mode: ${WEBPACK_MODE}`);
 }
-
-const pkg = await requireJson(getPath(paths.pkgJson));
 
 const getSources = (() => {
   let sources = null;
@@ -128,7 +130,7 @@ task("clean-favicons", () => deleteAsync([paths.favicons]));
 
 task("check-priv", async () => {
   try {
-    await fs.stat(getSrcPath(paths.sources.priv));
+    await fs.stat(getSrcPath(paths.sources.confPriv));
   } catch (e) {
     log(
       `Notice: Initializing ${paths.sources.confPriv}. Configure your API keys here.`,
@@ -394,7 +396,7 @@ task(
 
 task("docs-full", series("favicons", "docs"));
 
-const build = () =>
+const buildPipeline = () =>
   src(getSrcPath(paths.sources.entrypoint))
     .pipe(webpackStream(webpackConfig, webpack))
     .on("error", (err) => {
@@ -415,9 +417,9 @@ const build = () =>
       }),
     );
 
-task("build", build);
+task("build", series("check-priv", buildPipeline));
 
-task("build-full", series(parallel("check-priv", "clean"), "build"));
+task("build-full", series("clean", "build"));
 
 task("dist", parallel("docs-full", "build-full"));
 

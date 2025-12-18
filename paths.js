@@ -1,18 +1,33 @@
 import path from "path"
 import { fileURLToPath } from "url"
-import platforms from "platform-folders"
+import os from "os"
+
+const getConfigHome = () => {
+  const home = os.homedir()
+  const { env, platform } = process
+
+  if (platform === "win32") {
+    return env.APPDATA ?? path.join(home, "AppData", "Roaming")
+  }
+
+  if (platform === "darwin") {
+    return path.join(home, "Library", "Application Support")
+  }
+
+  return env.XDG_CONFIG_HOME ?? path.join(home, ".config")
+}
 
 const gulpfilePath = fileURLToPath(import.meta.url)
 
 const paths = {
   assets: "assets",
   buildDir: "build/",
-  confPrivExample: "conf.priv.example.js",
+  confPrivExample: path.join("src", "conf.priv.example.js"),
   dirname: path.dirname(gulpfilePath),
   favicons: "assets/favicons",
   faviconsManifest: "favicons.json",
   gulpfile: path.basename(gulpfilePath),
-  installDir: platforms.getConfigHome(),
+  installDir: getConfigHome(),
   srcDir: "src",
   output: "surfingkeys.js",
   pkgJson: "package.json",
