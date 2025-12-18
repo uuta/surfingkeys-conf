@@ -1343,8 +1343,8 @@ actions.openMyClosedPR = () => {
   tabOpenLink(url);
 };
 
-actions.openEnglishMaster = () => {
-  const url = "https://chatgpt.com/g/g-7q9OqKdwj-english-master";
+actions.openProjects = () => {
+  const url = `https://github.com/orgs/${priv.keys.gitHubOrg}/projects/10/views/4`;
   tabOpenLink(url);
 };
 

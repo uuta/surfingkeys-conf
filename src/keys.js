@@ -416,8 +416,8 @@ maps.global = [
   {
     alias: "oe",
     category: categories.visualMode,
-    description: "Open English Master",
-    callback: actions.openEnglishMaster,
+    description: "Open Projects on GitHub",
+    callback: actions.openProjects,
   },
   {
     alias: "cb",
